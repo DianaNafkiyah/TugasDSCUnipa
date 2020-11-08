@@ -1,0 +1,24 @@
+dataku<-read.csv("D:/energydata_complete.csv",header=T,sep=",")
+head(dataku)
+str(dataku)
+dim(dataku)
+View(dataku)
+dataku$Appliances<-as.numeric(dataku$Appliances)
+dataku$lights<-as.numeric(dataku$lights)
+str(dataku)
+r<-dim(dataku)[1]
+c<-dim(dataku)[2]
+summary(dataku)
+boxplot(dataku)
+datakuu=dataku[,-1]
+View(datakuu)
+boxplot(datakuu$Appliances)
+library(MASS)
+library(leaps)
+library(caret)
+y<-datakuu[,1]
+xnum<-datakuu[,-c(1)]
+head(y)
+head(xnum)
+pca<-prcomp(xnum,center=TRUE,scale. = TRUE)
+summary(pca)
